@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="myPrimaryColor">#283593</color>
+    <color name="myPrimaryDarkColor">#1A237E</color>
+    <color name="myAccentColor">#009688</color>
+    <color name="myAccentColorDark">#6EA929</color>
+    <color name="myTextPrimaryColor">#212121</color>
+
+
+</resources>
