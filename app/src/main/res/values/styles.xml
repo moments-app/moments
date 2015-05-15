@@ -19,4 +19,11 @@
         <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
     </style>
 
+    <style name="LoginTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/myPrimaryColor</item>
+
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+        <item name="colorAccent">@color/myAccentColor</item>
+        <item name="android:textColorPrimary">@color/loginColor</item>
+    </style>
 </resources>
