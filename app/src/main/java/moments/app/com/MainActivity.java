@@ -16,12 +16,16 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-
+    private FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(toolbar);
@@ -30,12 +34,16 @@ public class MainActivity extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
-            FragmentInvite fin = new FragmentInvite();
-            FragmentManager fm = getSupportFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.add(R.id.container, fin);
-            ft.commit();
+            FragmentInvite fragmentInvite = new FragmentInvite();
+            fragmentTransaction.add(R.id.container, fragmentInvite);
+            fragmentTransaction.commit();
 
+        }
+        else
+        {
+            FragmentWelcome fragmentWelcome = new FragmentWelcome();
+            fragmentTransaction.add(R.id.container, fragmentWelcome);
+            fragmentTransaction.commit();
         }
 
     }
