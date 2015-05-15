@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Moments</string>
 
-    <string name="hello_world">Hello Aaaayu</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="hello_invite">Inviting you to use moments!</string>
     <string name="action_settings">Settings</string>
 </resources>
