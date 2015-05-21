@@ -49,7 +49,8 @@
         android:hint="@string/emailHint"
         android:inputType="textEmailAddress"
         material:floatingLabel="true"
-        android:layout_marginTop="24dp"/>
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="-12dp"/>
 
     <MaterialEditText
         android:id="@+id/passwordEditText"
@@ -58,6 +59,7 @@
         android:hint="@string/passwordHint"
         android:inputType="textPassword"
         material:floatingLabel="true"
+        android:layout_marginTop="-10dp"
         />
 
     <android.support.v7.widget.AppCompatButton
@@ -65,7 +67,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/loginButton"
-        android:layout_marginTop="24dp"/>
+        android:layout_marginTop="24dp"
+        />
 
     <android.support.v7.widget.AppCompatTextView
         android:layout_width="match_parent"
