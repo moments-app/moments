@@ -24,7 +24,10 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile 'com.android.support:support-v4:22.1.1'
     compile 'com.android.support:recyclerview-v7:22.0.0'
+    compile 'fr.erictruong:materialedittext:0.2.0'
+    compile 'uk.co.chrisjenx:calligraphy:2.1.0'
     compile('com.mikepenz.materialdrawer:library:2.9.7@aar') {
         transitive = true
     }
+
 }

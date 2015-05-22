@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Moments</string>
-
+    <string name="app_slogan">Insert Long Long Slogan here</string>
     <string name="hello_world">Hello World!</string>
     <string name="hello_invite">Inviting you to use moments!</string>
     <string name="action_settings">Settings</string>
@@ -14,6 +14,12 @@
     <string name="drawer_item_secondary1">Profile</string>
     <string name="drawer_item_secondary2">Settings</string>
     <string name="drawer_item_secondary3">Sign Out</string>
-
+    <string name="emailHint">E-mail</string>
+    <string name="passwordHint">Password</string>
+    <string name="loginButton">Login</string>
+    <string name="forgotPassword">Forgot Password?</string>
+    <string name="createAccount">Sign Up</string>
+    <string name="drawer_item_home">Hello</string>
+    <string name="drawer_item_settings">Settings</string>
 
 </resources>
