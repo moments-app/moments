@@ -6,6 +6,8 @@
     <color name="myAccentColor">#009688</color>
     <color name="myAccentColorDark">#6EA929</color>
     <color name="myTextPrimaryColor">#212121</color>
+    <color name="myPrimaryDarkColorLogin">#374A89</color>
+    <color name="myLoginColor">#FFFFFF</color>
 
 
 </resources>
