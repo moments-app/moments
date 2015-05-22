@@ -55,14 +55,16 @@ public class MainActivity extends AppCompatActivity {
                 .withToolbar(toolbar)
                 .withAccountHeader(headerResult)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName(R.string.drawer_item_home),
-                        new PrimaryDrawerItem().withName(R.string.drawer_item_home),
-                        new PrimaryDrawerItem().withName(R.string.drawer_item_home),
-                        new PrimaryDrawerItem().withName(R.string.drawer_item_home),
-                        new PrimaryDrawerItem().withName(R.string.drawer_item_home),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_primary1),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_primary2),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_primary3),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_primary4),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_primary5),
                         new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName(R.string.drawer_item_settings)
-                )
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_secondary1),
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_secondary2),
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_secondary3)
+                        )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
