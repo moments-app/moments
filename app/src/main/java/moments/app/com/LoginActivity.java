@@ -1,6 +1,7 @@
 package moments.app.com;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -19,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -43,25 +45,58 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.loginButton) void login(View view){
 
-        if (!email.getText().toString().equalsIgnoreCase(null) && isValidEmail(email.getText().toString()))
-        {
-            if(password.getText().toString().length()>=8)
-            {
-                emailLabel.setError("");
-                passwordLabel.setError("");
+        hideKeyboard();
 
+        if (isNetworkAvailable()) {
+            if (!email.getText().toString().equalsIgnoreCase(null) && isValidEmail(email.getText().toString()))
+            {
+                if (password.getText().toString().length() >= 8)
+                {
+                    //make errors go away
+                    emailLabel.setError("");
+                    passwordLabel.setError("");
+
+                    //get edit text content into variables
+                    String emailText = email.getText().toString().trim();
+                    String passText = password.getText().toString().trim();
+
+                    //Progress bar here
+                    progressBar.setVisibility(View.VISIBLE);
+
+                    ParseUser.logInInBackground(emailText, passText, new LogInCallback() {
+                        public void done(ParseUser user, ParseException e) {
+                            if (user != null) {
+                                // Hooray! The user is logged in.
+                                progressBar.setVisibility(View.INVISIBLE);
+                                Toast.makeText(getApplicationContext(), "Wohoo, you are now logged in!", Toast.LENGTH_SHORT).show();
+
+                                //Start MainActivity
+                                startNewActivity();
+                            } else {
+                                // Signup failed. Look at the ParseException to see what happened.
+                                progressBar.setVisibility(View.INVISIBLE);
+                                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+                else
+                {
+                    passwordLabel.setError("Minimum length of password is 6!");
+                }
             }
             else
             {
-                passwordLabel.setError("Minimum length of password is 6!");
+                emailLabel.setError("Email address in invalid format!");
             }
         }
         else
         {
-            emailLabel.setError("Email address in invalid format!");
+            Toast.makeText(getApplicationContext(), "Not connected to the internet", Toast.LENGTH_SHORT).show();
         }
-
     }
+
+
 
     @OnClick(R.id.signUpButton) void signUp(){
 
@@ -93,6 +128,10 @@ public class LoginActivity extends AppCompatActivity {
                                 // Hooray! Let them use the app now.
                                 progressBar.setVisibility(View.INVISIBLE);
                                 Toast.makeText(getApplicationContext(), "Wohoo, you can now use the app!", Toast.LENGTH_SHORT).show();
+
+                                //Start MainActivity
+                                startNewActivity();
+
                             } else {
                                 progressBar.setVisibility(View.INVISIBLE);
                                 Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -133,6 +172,12 @@ public class LoginActivity extends AppCompatActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+    private void startNewActivity () {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
@@ -142,8 +187,14 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        ButterKnife.inject(this);
+
+        if (ParseUser.getCurrentUser() != null) {
+            // Start an intent for the logged in activity
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        }
+            setContentView(R.layout.activity_login);
+            ButterKnife.inject(this);
 
     }
 
