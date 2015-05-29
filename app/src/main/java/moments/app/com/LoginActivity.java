@@ -11,11 +11,13 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -41,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     @InjectView(R.id.emailLabel) TextInputLayout emailLabel;
     @InjectView(R.id.passwordLabel) TextInputLayout passwordLabel;
     @InjectView(R.id.signUpProgress) ProgressBar progressBar;
-
+    @InjectView(R.id.showPassword) CheckBox showPassword;
 
     @OnClick(R.id.loginButton) void login(View view){
 
@@ -82,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    passwordLabel.setError("Minimum length of password is 6!");
+                    passwordLabel.setError("Minimum length of password is 8!");
                 }
             }
             else
@@ -139,7 +141,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    passwordLabel.setError("Minimum length of password is 6!");
+                    passwordLabel.setError("Minimum length of password is 8!");
                 }
             } else {
                 emailLabel.setError("Email address in invalid format!");
@@ -151,6 +153,25 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+
+    @OnClick(R.id.showPassword) void togglePass(){
+        int start,end;
+
+        if (!showPassword.isChecked())
+        {
+            start=password.getSelectionStart();
+            end=password.getSelectionEnd();
+            password.setTransformationMethod(new PasswordTransformationMethod());
+            password.setSelection(start,end);
+        }
+        else
+        {
+            start=password.getSelectionStart();
+            end=password.getSelectionEnd();
+            password.setTransformationMethod(null);
+            password.setSelection(start,end);
+        }
+    }
 
     public final static boolean isValidEmail(CharSequence target) {
         return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
