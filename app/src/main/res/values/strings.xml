@@ -22,5 +22,5 @@
     <string name="drawer_item_home">Hello</string>
     <string name="drawer_item_settings">Settings</string>
     <string name="lognBackDesc">Wallpaper</string>
-
+    <string name="showPass">Show Password</string>
 </resources>
