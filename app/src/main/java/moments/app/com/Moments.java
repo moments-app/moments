@@ -11,6 +11,6 @@ public class Moments extends Application {
 
     @Override public void onCreate() {
         super.onCreate();
-        Parse.initialize(this, "AppID", "ClientID"); // Your Application ID and Client Key are defined elsewhere
+        Parse.initialize(this, "AppId", "ClientID"); // Your Application ID and Client Key are defined elsewhere
     }
 }

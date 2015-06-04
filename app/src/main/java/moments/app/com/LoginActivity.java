@@ -71,13 +71,12 @@ public class LoginActivity extends AppCompatActivity {
                                 // Hooray! The user is logged in.
                                 progressBar.setVisibility(View.INVISIBLE);
                                 Toast.makeText(getApplicationContext(), "Wohoo, you are now logged in!", Toast.LENGTH_SHORT).show();
-
                                 //Start MainActivity
                                 startNewActivity();
                             } else {
                                 // Signup failed. Look at the ParseException to see what happened.
                                 progressBar.setVisibility(View.INVISIBLE);
-                                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Email or password is not entered correctly.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -94,13 +93,12 @@ public class LoginActivity extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(getApplicationContext(), "Not connected to the internet", Toast.LENGTH_SHORT).show();
+            Snackbar.make(view,"Not connected to internet",Snackbar.LENGTH_SHORT).show();
         }
     }
 
 
-
-    @OnClick(R.id.signUpButton) void signUp(){
+    @OnClick(R.id.signUpButton) void signUp(View view){
 
         hideKeyboard();
 
@@ -118,12 +116,12 @@ public class LoginActivity extends AppCompatActivity {
                     //Progress bar here
                     progressBar.setVisibility(View.VISIBLE);
 
-                    //set signup paramters
+                    //set sign up parameters
                     ParseUser user = new ParseUser();
                     user.setUsername(emailText);
                     user.setPassword(passText);
 
-                    //Signup
+                    //Sign up
                     user.signUpInBackground(new SignUpCallback() {
                         public void done(ParseException e) {
                             if (e == null) {
@@ -149,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(getApplicationContext(), "Not connected to the internet", Toast.LENGTH_SHORT).show();
+            Snackbar.make(view, "Not connected to internet", Snackbar.LENGTH_SHORT).show();
         }
     }
 

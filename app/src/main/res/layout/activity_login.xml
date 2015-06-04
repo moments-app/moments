@@ -18,7 +18,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="32dp"
+        android:layout_margin="28dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:orientation="vertical"
@@ -29,7 +29,7 @@
             fontPath="fonts/Pacifico-Regular.ttf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="24dp"
             android:gravity="center_horizontal"
             android:text="@string/app_name"
             android:textSize="48sp" />
@@ -39,7 +39,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="@string/app_slogan" />
+            android:text="@string/app_slogan"
+            android:layout_marginTop="-8dp"/>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/emailLabel"
@@ -50,7 +51,7 @@
                 android:id="@+id/emailEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="20dp"
                 android:hint="@string/emailHint"
                 android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>
@@ -82,7 +83,7 @@
             android:id="@+id/twoButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp">
+            android:layout_marginTop="20dp">
 
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/loginButton"
@@ -121,6 +122,5 @@
             android:visibility="invisible" />
 
     </LinearLayout>
-
 
 </FrameLayout>
