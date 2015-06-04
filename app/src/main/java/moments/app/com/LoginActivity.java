@@ -2,10 +2,8 @@ package moments.app.com;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -13,24 +11,19 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
@@ -50,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         hideKeyboard();
 
         if (isNetworkAvailable()) {
-            if (!email.getText().toString().equalsIgnoreCase(null) && isValidEmail(email.getText().toString()))
+            if (isValidEmail(email.getText().toString()))
             {
                 if (password.getText().toString().length() >= 8)
                 {
