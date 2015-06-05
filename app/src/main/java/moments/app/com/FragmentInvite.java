@@ -15,14 +15,19 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.parse.FunctionCallback;
 import com.parse.Parse;
+import com.parse.ParseCloud;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
+
+import java.util.HashMap;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -35,7 +40,7 @@ public class FragmentInvite extends Fragment {
     @InjectView(R.id.emailPartner) EditText partnerEmail;
     @InjectView(R.id.secretCode) EditText secretCode;
     @InjectView(R.id.inviteButton) Button inviteButton;
-
+    @InjectView(R.id.inviteProgress) ProgressBar progressBar;
     @OnClick(R.id.inviteButton) void invitePartner(final View v){
 
         hideKeyboard(getActivity());
@@ -44,23 +49,16 @@ public class FragmentInvite extends Fragment {
             if (isValidEmail(partnerEmail.getText().toString())){
                 if (secretCode.getText().toString().length() >= 6)
                 {
-                    String userName = nameUser.getText().toString().trim();
-                    String emailPartner = partnerEmail.getText().toString().trim();
-                    String secretCodeP = secretCode.getText().toString().trim();
+                    final String userName = nameUser.getText().toString().trim();
+                    final String emailPartner = partnerEmail.getText().toString().trim();
+                    final String secretCodeP = secretCode.getText().toString().trim();
 
-                    ParseUser user = ParseUser.getCurrentUser();
+                    inviteButton.setEnabled(false);
+
+                    progressBar.setVisibility(View.VISIBLE);
+                    final ParseUser user = ParseUser.getCurrentUser();
                     user.put("name",userName);
-                    user.saveInBackground(new SaveCallback() {
-                        public void done(ParseException e) {
-                            if (e == null) {
-                                //Snackbar.make(v,"User name saved",Snackbar.LENGTH_SHORT).show();
-                            } else {
-                                // Sign up didn't succeed. Look at the ParseException
-                                // to figure out what went wrong
-                                //Snackbar.make(v,"User name not saved",Snackbar.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+                    user.saveInBackground();
 
 
                     ParseObject invite = new ParseObject("Invitation");
@@ -70,9 +68,31 @@ public class FragmentInvite extends Fragment {
                     invite.put("isAccepted",false);
                     invite.saveInBackground(new SaveCallback() {
                         public void done(ParseException e) {
-                            if (e == null) {
-                                Snackbar.make(v,"Details saved",Snackbar.LENGTH_SHORT).show();
-                            } else {
+                            if (e == null)
+                            {
+                                //Snackbar.make(v,"Details saved",Snackbar.LENGTH_SHORT).show();
+                                HashMap<String, Object> params = new HashMap<String, Object>();
+                                params.put("secretCode", secretCodeP);
+                                params.put("emailR",emailPartner);
+                                params.put("emailS",user.getUsername());
+                                params.put("nameSender", userName);
+
+                                //CloudCode
+                                ParseCloud.callFunctionInBackground("sendEmail", params, new FunctionCallback<String>() {
+                                    public void done(String res, ParseException e) {
+                                        if (e == null) {
+                                            progressBar.setVisibility(View.INVISIBLE);
+                                            Toast.makeText(getActivity(), "" + res, Toast.LENGTH_SHORT).show();
+                                        }
+                                        else{
+                                            progressBar.setVisibility(View.INVISIBLE);
+                                            Toast.makeText(getActivity(), "" + res, Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                            }
+                            else
+                            {
                                 // Sign up didn't succeed. Look at the ParseException
                                 // to figure out what went wrong
                                 Snackbar.make(v,"Not saved",Snackbar.LENGTH_SHORT).show();
