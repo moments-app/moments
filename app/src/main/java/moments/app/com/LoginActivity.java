@@ -132,9 +132,11 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
                 } else {
+                    passwordLabel.setErrorEnabled(true);
                     passwordLabel.setError("Minimum length of password is 8!");
                 }
             } else {
+                emailLabel.setErrorEnabled(true);
                 emailLabel.setError("Email address in invalid format!");
             }
         }
