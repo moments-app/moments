@@ -12,6 +12,9 @@
 bin/
 gen/
 
+# Mirror files
+mirror/
+
 # Gradle files
 .gradle/
 build/
