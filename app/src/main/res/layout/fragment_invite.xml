@@ -1,12 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    >
 
-    <TextView
+    <android.support.v7.widget.AppCompatTextView
         android:id="@+id/invite"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="@string/hello_invite"
+        android:text="@string/invite_greeting"
         />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/tell_your_name"
+        android:layout_marginTop="4dp"
+        android:textSize="16sp"
+        android:maxLines="1"
+        />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/invitePartner"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/hello_invite"
+        android:layout_marginTop="12dp"
+
+        />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/emailPartner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/emailPartner"
+        android:layout_marginTop="4dp"
+        android:textSize="16sp"
+        android:maxLines="1"
+        android:inputType="textEmailAddress"
+        />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/secretCode"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:hint="@string/partnerSecret"
+        android:layout_marginTop="4dp"
+        android:textSize="16sp"
+        android:maxLines="1"
+        />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/inviteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/inviteButton"
+        android:gravity="center"
+        android:layout_gravity="end"
+        android:layout_marginTop="8dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:textColor="@color/myAccentColor"/>
+
+    <ProgressBar
+        android:id="@+id/inviteProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/myAccentColor"
+        android:indeterminateTintMode="src_in"
+        android:visibility="invisible" />
+
 </LinearLayout>
