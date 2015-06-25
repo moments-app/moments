@@ -23,7 +23,9 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.accountswitcher.AccountHeader;
+import com.mikepenz.materialdrawer.accountswitcher.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
@@ -140,9 +142,41 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createNavDrawer(){
-        //Put navigation drawer creation code here!
+        AccountHeader headerResult = new AccountHeaderBuilder()
+                .withActivity(this)
+                .withHeaderBackground(R.drawable.background)
+                .withSelectionListEnabledForSingleProfile(false)
+                .addProfiles(
+                        new ProfileDrawerItem().withName("Aayushi Acharya").withEmail("aayu.acharya@gmail.com").withIcon(getResources().getDrawable(R.drawable.profile))
+                )
+                .build();
 
 
-    }
+        Drawer result = new DrawerBuilder()
+                .withActivity(this)
+                .withToolbar(toolbar)
+                .withAccountHeader(headerResult)
+                .addDrawerItems(
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_homeprimary),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_timeline),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_expenses),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_statistics),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_map),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_gallery),
+                        new DividerDrawerItem(),
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_profile),
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_settingsprimary),
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_signout)
+                )
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public boolean onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
+                        // do something with the clicked item :D
+                        return false;
+                    }
+                })
+                .build();
+
+    } //createNavDrawer ends
 
 }
