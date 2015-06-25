@@ -13,6 +13,17 @@
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/fragmentProgressBar"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/myAccentColor"
+            android:indeterminateTintMode="src_in"
+            android:visibility="invisible"/>
+    </FrameLayout>
 
 </LinearLayout>

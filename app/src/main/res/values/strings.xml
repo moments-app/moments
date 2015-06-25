@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Moments</string>
     <string name="app_slogan">Insert Long Long Slogan here</string>
-    <string name="hello_world">Hello World!</string>
+    <string name="hello_world">Welcome to Moments!</string>
     <string name="hello_invite">Now, invite your partner to use Moments!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">LoginActivity</string>
@@ -35,4 +35,5 @@
     <string name="waitingToAccept"> Please wait for your partner to accept the invitation.</string>
     <string name="waitingImage">Waiting Image</string>
     <string name="partnerName">Enter your name</string>
+    <string name="title_activity_add_new_place">AddNewPlaceActivity</string>
 </resources>

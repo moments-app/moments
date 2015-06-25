@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 /**
  * Created by Kevin Desai on 6/22/2015.
  */
-public class FragmentWaiting extends android.support.v4.app.Fragment {
+public class FragmentWaiting extends android.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

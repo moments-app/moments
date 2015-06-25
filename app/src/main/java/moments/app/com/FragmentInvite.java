@@ -6,7 +6,7 @@ package moments.app.com;
 
 import android.app.Activity;
 
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -20,8 +20,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 
 import com.parse.CountCallback;
 import com.parse.FunctionCallback;

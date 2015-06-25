@@ -120,8 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (e == null) {
                                 // Hooray! Let them use the app now.
                                 progressBar.setVisibility(View.INVISIBLE);
-                                Toast.makeText(getApplicationContext(), "Wohoo, you can now use the app!", Toast.LENGTH_SHORT).show();
-
+                                //Toast.makeText(getApplicationContext(), "Wohoo, you can now use the app!", Toast.LENGTH_SHORT).show();
                                 //Start MainActivity
                                 startNewActivity();
 
