@@ -24,7 +24,7 @@ public class AddNewPlaceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         if (android.os.Build.VERSION.SDK_INT>=21){
             getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-            getWindow().setEnterTransition(new Fade());
+            getWindow().setEnterTransition(new Explode());
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_place);

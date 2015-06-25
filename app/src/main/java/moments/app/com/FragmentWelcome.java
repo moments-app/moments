@@ -32,7 +32,7 @@ public class FragmentWelcome extends Fragment {
 
         //Toast.makeText(getActivity().getApplicationContext(), "Hello", Toast.LENGTH_SHORT).show();
         if (android.os.Build.VERSION.SDK_INT>=21){
-            getActivity().getWindow().setExitTransition(new Fade());
+            getActivity().getWindow().setExitTransition(new Explode());
             Intent intent = new Intent(getActivity(), AddNewPlaceActivity.class);
             startActivity(intent,
                     ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
