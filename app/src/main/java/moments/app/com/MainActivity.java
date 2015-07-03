@@ -22,6 +22,7 @@ import android.widget.AdapterView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.mikepenz.iconics.typeface.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.accountswitcher.AccountHeader;
@@ -157,16 +158,16 @@ public class MainActivity extends AppCompatActivity {
                 .withToolbar(toolbar)
                 .withAccountHeader(headerResult)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName(R.string.drawer_item_homeprimary),
-                        new PrimaryDrawerItem().withName(R.string.drawer_item_timeline),
-                        new PrimaryDrawerItem().withName(R.string.drawer_item_expenses),
-                        new PrimaryDrawerItem().withName(R.string.drawer_item_statistics),
-                        new PrimaryDrawerItem().withName(R.string.drawer_item_map),
-                        new PrimaryDrawerItem().withName(R.string.drawer_item_gallery),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_homeprimary).withIcon(FontAwesome.Icon.faw_home),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_timeline).withIcon(FontAwesome.Icon.faw_history),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_expenses).withIcon(FontAwesome.Icon.faw_inr),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_statistics).withIcon(FontAwesome.Icon.faw_line_chart),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_map).withIcon(FontAwesome.Icon.faw_map_marker),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_gallery).withIcon(FontAwesome.Icon.faw_picture_o),
                         new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName(R.string.drawer_item_profile),
-                        new SecondaryDrawerItem().withName(R.string.drawer_item_settingsprimary),
-                        new SecondaryDrawerItem().withName(R.string.drawer_item_signout)
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_profile).withIcon(FontAwesome.Icon.faw_user),
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_settingsprimary).withIcon(FontAwesome.Icon.faw_cog),
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_signout).withIcon(FontAwesome.Icon.faw_sign_out)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override

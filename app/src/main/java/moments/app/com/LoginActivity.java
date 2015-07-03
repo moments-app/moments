@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (user != null) {
                                 // Hooray! The user is logged in.
                                 progressBar.setVisibility(View.INVISIBLE);
-                                Toast.makeText(getApplicationContext(), "Wohoo, you are now logged in!", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getApplicationContext(), "Wohoo, you are now logged in!", Toast.LENGTH_SHORT).show();
                                 //Start MainActivity
                                 startNewActivity();
                             } else {

@@ -10,6 +10,7 @@
         <item name="android:textColorPrimary">@color/myTextPrimaryColor</item>
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="material_drawer_selected_text">@color/myPrimaryColor</item>
 
     </style>
 
@@ -27,4 +28,9 @@
         <item name="colorButtonNormal">@color/myAccentColor</item>
         <item name="android:windowTranslucentStatus">true</item>
     </style>
+
+   <!-- <style name="NavDrawerTheme" parent="Theme.AppCompat.NoActionBar">
+
+    </style>-->
+
 </resources>
