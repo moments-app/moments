@@ -90,11 +90,15 @@ public class MainActivity extends AppCompatActivity {
                         //final String objectID = object.getObjectId();
                         //user.put("groupID",objectID);
                         //user.saveInBackground();
-                        createNavDrawer();
-                        fragmentProgressBar.setVisibility(View.INVISIBLE);
+
+
+
                         FragmentWelcome fragmentWelcome = new FragmentWelcome();
                         fragmentTransaction.add(R.id.container, fragmentWelcome);
                         fragmentTransaction.commit();
+
+                        createNavDrawer();
+                        fragmentProgressBar.setVisibility(View.INVISIBLE);
                     }
                 }
                 //If the email is not in the sender column, it can be in the reciever column. or it might not exist at all.
@@ -119,11 +123,14 @@ public class MainActivity extends AppCompatActivity {
                                     //final String objectID = object.getObjectId();
                                     //user.put("groupID",objectID);
                                     //user.saveInBackground();
-                                    createNavDrawer();
-                                    fragmentProgressBar.setVisibility(View.INVISIBLE);
+
+
                                     FragmentWelcome fragmentWelcome = new FragmentWelcome();
                                     fragmentTransaction.add(R.id.container, fragmentWelcome);
                                     fragmentTransaction.commit();
+
+                                    createNavDrawer();
+                                    fragmentProgressBar.setVisibility(View.INVISIBLE);
                                 }
                             }
                             //Null object means that the email id is not in any columns, sender or reciever. In such cases he/she has to invite
@@ -148,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
                 .withHeaderBackground(R.drawable.background)
                 .withSelectionListEnabledForSingleProfile(false)
                 .addProfiles(
-                        new ProfileDrawerItem().withName("Aayushi Acharya").withEmail("aayu.acharya@gmail.com").withIcon(getResources().getDrawable(R.drawable.profile))
+                        new ProfileDrawerItem().withName(user.getString("name")).withEmail(user.getUsername()).withIcon(getResources().getDrawable(R.drawable.profile))
                 )
                 .build();
 
