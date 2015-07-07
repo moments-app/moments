@@ -77,6 +77,9 @@ public class FragmentInvited extends Fragment {
                                             user.saveInBackground();
                                             obj.saveInBackground();
 
+                                            MainActivity forDraw = new MainActivity();
+                                            forDraw.createNavDrawer();
+
                                             FragmentManager fragmentManager2 = getFragmentManager();
                                             FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
                                             FragmentWelcome fragment2 = new FragmentWelcome();
