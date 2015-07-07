@@ -1,26 +1,15 @@
 package moments.app.com;
 
 
-import android.app.ActivityOptions;
-import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.support.v4.app.Fragment;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
-import android.transition.Explode;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.mikepenz.iconics.typeface.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
@@ -37,10 +26,9 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import moments.app.com.RevealTransition;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import butterknife.OnClick;
 
 
 public class MainActivity extends AppCompatActivity {
