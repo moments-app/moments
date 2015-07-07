@@ -87,12 +87,6 @@ public class MainActivity extends AppCompatActivity {
                     //if the invitation is accepted show the welcome screen.
                     else
                     {
-                        //final String objectID = object.getObjectId();
-                        //user.put("groupID",objectID);
-                        //user.saveInBackground();
-
-
-
                         FragmentWelcome fragmentWelcome = new FragmentWelcome();
                         fragmentTransaction.add(R.id.container, fragmentWelcome);
                         fragmentTransaction.commit();
@@ -123,8 +117,6 @@ public class MainActivity extends AppCompatActivity {
                                     //final String objectID = object.getObjectId();
                                     //user.put("groupID",objectID);
                                     //user.saveInBackground();
-
-
                                     FragmentWelcome fragmentWelcome = new FragmentWelcome();
                                     fragmentTransaction.add(R.id.container, fragmentWelcome);
                                     fragmentTransaction.commit();
