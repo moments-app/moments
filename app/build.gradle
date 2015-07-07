@@ -31,6 +31,6 @@ dependencies {
     }
     compile 'com.parse.bolts:bolts-android:1.+'
     compile fileTree(include: 'Parse-*.jar', dir: 'libs')
-    compile files('libs/Parse-1.9.2.jar')
+    compile files('libs/Parse-1.9.3.jar')
     compile 'com.jakewharton:butterknife:6.1.0'
 }
