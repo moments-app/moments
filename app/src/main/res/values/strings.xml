@@ -33,7 +33,7 @@
     <string name="startUsingAppButton">START USING MOMENTS</string>
     <string name="enterSecretCode">Enter the secret code</string>
     <string name="waitingToAccept"> Please wait for your partner to accept the invitation.</string>
-    <string name="waitingImage">Waiting Image</string>
+    <string name="waitingImage">Waiting Image Placeholder</string>
     <string name="partnerName">Enter your name</string>
     <string name="title_activity_add_new_place">AddNewPlaceActivity</string>
 </resources>
