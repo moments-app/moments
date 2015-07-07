@@ -35,7 +35,13 @@ public class AddNewPlaceActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar_actionbarAdd);
         setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.keyboard_backspace);
+        if (android.os.Build.VERSION.SDK_INT>=21){
+            toolbar.setNavigationIcon(R.drawable.keyboard_backspace);
+        }
+        else
+        {
+            toolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace_white_24dp);
+        }
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
