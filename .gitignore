@@ -32,3 +32,6 @@ proguard/
 /.idea
 .DS_Store
 *.iml
+
+#KeysFile
+Moments.java
