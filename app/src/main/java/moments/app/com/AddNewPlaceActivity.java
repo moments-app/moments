@@ -10,7 +10,10 @@ import android.transition.Fade;
 import android.transition.Slide;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
+
+import com.mikepenz.iconics.typeface.FontAwesome;
 
 import butterknife.InjectView;
 
@@ -32,6 +35,13 @@ public class AddNewPlaceActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar_actionbarAdd);
         setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.keyboard_backspace);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
 
     }
