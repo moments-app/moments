@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                         fragmentProgressBar.setVisibility(View.INVISIBLE);
                     }
                 }
-                //If the email is not in the sender column, it can be in the receiver column. or it might not exist at all.
+                //If the email is not in the sender column, it can be in the receiver column or it might not exist at all.
                 else {
 
                     ParseQuery<ParseObject> query = ParseQuery.getQuery("Invitation");
