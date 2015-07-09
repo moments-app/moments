@@ -36,4 +36,12 @@
     <string name="waitingImage">Waiting Image Placeholder</string>
     <string name="partnerName">Enter your name</string>
     <string name="title_activity_add_new_place">AddNewPlaceActivity</string>
+    <string name="home">All your memories captured</string>
+    <string name="timeline">Your timely activities</string>
+    <string name="expenses">This is how much lighter your pockets are</string>
+    <string name="statistics">Where have you been most, which area do you frequently prefer etc.</string>
+    <string name="map">A cool overview of the places pinned on the map</string>
+    <string name="gallery">Pictures speak the most</string>
+    <string name="profile">This is how you are!</string>
+    <string name="settings">Optimizations take place here</string>
 </resources>

@@ -6,6 +6,7 @@ import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     final ParseUser user = ParseUser.getCurrentUser();
+    private Drawer result = null; //save our header or result
 
     @InjectView(R.id.fragmentProgressBar)
     ProgressBar fragmentProgressBar;
@@ -159,7 +161,51 @@ public class MainActivity extends AppCompatActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
-                        // do something with the clicked item :D
+                        fragmentManager = getFragmentManager();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        switch (position) {
+                            case 0:
+                                fragmentProgressBar.setVisibility(View.INVISIBLE);
+                                FragmentHome fragmentHome = new FragmentHome();
+                                fragmentTransaction.replace(R.id.container, fragmentHome).commit();
+                                break;
+                            case 1:
+                                fragmentProgressBar.setVisibility(View.INVISIBLE);
+                                FragmentTimeline fragmentTimeline = new FragmentTimeline();
+                                fragmentTransaction.replace(R.id.container, fragmentTimeline).commit();
+                                break;
+                            case 2:
+                                fragmentProgressBar.setVisibility(View.INVISIBLE);
+                                FragmentExpenses fragmentExpenses = new FragmentExpenses();
+                                fragmentTransaction.replace(R.id.container, fragmentExpenses).commit();
+                                break;
+                            case 3:
+                                fragmentProgressBar.setVisibility(View.INVISIBLE);
+                                FragmentStatistics fragmentStatistics = new FragmentStatistics();
+                                fragmentTransaction.replace(R.id.container, fragmentStatistics).commit();
+                                break;
+                            case 4:
+                                fragmentProgressBar.setVisibility(View.INVISIBLE);
+                                FragmentMap fragmentMap = new FragmentMap();
+                                fragmentTransaction.replace(R.id.container, fragmentMap).commit();
+                                break;
+                            case 5:
+                                fragmentProgressBar.setVisibility(View.INVISIBLE);
+                                FragmentGallery fragmentGallery = new FragmentGallery();
+                                fragmentTransaction.replace(R.id.container, fragmentGallery).commit();
+                                break;
+                            case 7:
+                                fragmentProgressBar.setVisibility(View.INVISIBLE);
+                                FragmentProfile fragmentProfile = new FragmentProfile();
+                                fragmentTransaction.replace(R.id.container, fragmentProfile).commit();
+                                break;
+                            case 8:
+                                fragmentProgressBar.setVisibility(View.INVISIBLE);
+                                FragmentSettings fragmentSettings = new FragmentSettings();
+                                fragmentTransaction.replace(R.id.container, fragmentSettings).commit();
+                                break;
+
+                        }
                         return false;
                     }
                 })
@@ -167,4 +213,16 @@ public class MainActivity extends AppCompatActivity {
 
     } //createNavDrawer ends
 
-}
+    @Override
+        public void onBackPressed() {
+            //handle the back press :D close the drawer first and if the drawer is closed close the activity
+            if (result != null && result.isDrawerOpen()) {
+                result.closeDrawer();
+            } else {
+                super.onBackPressed();
+            }
+        }
+
+
+
+}//class ends
