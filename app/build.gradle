@@ -23,15 +23,18 @@ repositories {
     maven {
         url "https://repo.commonsware.com.s3.amazonaws.com"
     }
+    maven {
+        url "https://jitpack.io"
+    }
 }
 
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:22.2.0'
-    compile 'com.android.support:support-v4:22.2.0'
-    compile 'com.android.support:recyclerview-v7:22.2.0'
-    compile 'com.android.support:design:22.2.0'
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:support-v4:22.2.1'
+    compile 'com.android.support:recyclerview-v7:22.2.1'
+    compile 'com.android.support:design:22.2.1'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
     compile('com.mikepenz:materialdrawer:3.0.9@aar') {
         transitive = true
@@ -43,5 +46,5 @@ dependencies {
     compile "com.google.android.gms:play-services:7.5.0"
     compile 'com.wdullaer:materialdatetimepicker:1.4.1'
     compile 'com.afollestad:material-dialogs:0.7.6.0'
-
+    compile 'com.github.jaydeepw:poly-picker:v1.0.14'
 }

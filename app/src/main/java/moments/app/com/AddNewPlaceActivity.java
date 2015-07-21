@@ -2,10 +2,12 @@ package moments.app.com;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Parcelable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,13 +19,18 @@ import android.text.Spanned;
 import android.transition.Explode;
 
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,9 +53,12 @@ import com.parse.ParseUser;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
@@ -56,6 +66,9 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
+import nl.changer.polypicker.Config;
+import nl.changer.polypicker.ImagePickerActivity;
+import nl.changer.polypicker.utils.ImageInternalFetcher;
 
 public class AddNewPlaceActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,
         DatePickerDialog.OnDateSetListener {
@@ -77,6 +90,12 @@ public class AddNewPlaceActivity extends AppCompatActivity implements GoogleApiC
     private static final LatLngBounds BOUNDS_GREATER_SYDNEY = new LatLngBounds(
             new LatLng(-34.041458, 150.790100), new LatLng(-33.682247, 151.383362));
 
+    private static final int INTENT_REQUEST_GET_N_IMAGES = 14;
+    private static final int INTENT_REQUEST_GET_IMAGES = 13;
+
+    private Context mContext;
+    private ViewGroup mSelectedImagesNone;
+    HashSet<Uri> mMedia = new HashSet<Uri>();
 
     @InjectView(R.id.datePicker)
     TextView pickADate;
@@ -90,13 +109,112 @@ public class AddNewPlaceActivity extends AppCompatActivity implements GoogleApiC
     EditText secondEdit;
     @InjectView(R.id.makeANote)
     TextView makeNote;
+    @InjectView(R.id.selectPicture)
+    TextView selectPicture;
+    @InjectView(R.id.selected_photos_container)
+    ViewGroup mSelectedImagesContainer;
 
+    //Called after user adds a note.
     private void randomFunction()
     {
-       Toast.makeText(this,"It works!",Toast.LENGTH_SHORT).show();
+       //Toast.makeText(this,"It works!",Toast.LENGTH_SHORT).show();
        hideKeyboard();
     }
 
+    @OnClick(R.id.selectPicture)
+    void openGallery(View v){
+        getImages();
+    }
+
+
+    private void getImages() {
+        Intent intent = new Intent(mContext, ImagePickerActivity.class);
+        Config config = new Config.Builder()
+                .setTabBackgroundColor(R.color.white)    // set tab background color. Default white.
+                .setTabSelectionIndicatorColor(R.color.myAccentColor)
+                .setCameraButtonColor(R.color.myAccentColor)
+                .setSelectionLimit(3)    // set photo selection limit. Default unlimited selection.
+                .build();
+        ImagePickerActivity.setConfig(config);
+        startActivityForResult(intent, INTENT_REQUEST_GET_N_IMAGES);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resuleCode, Intent intent) {
+        super.onActivityResult(requestCode, resuleCode, intent);
+
+        if (resuleCode == Activity.RESULT_OK) {
+            if (requestCode == INTENT_REQUEST_GET_IMAGES || requestCode == INTENT_REQUEST_GET_N_IMAGES) {
+                Parcelable[] parcelableUris = intent.getParcelableArrayExtra(ImagePickerActivity.EXTRA_IMAGE_URIS);
+
+                if (parcelableUris == null) {
+                    return;
+                }
+
+                // Java doesn't allow array casting, this is a little hack
+                Uri[] uris = new Uri[parcelableUris.length];
+                System.arraycopy(parcelableUris, 0, uris, 0, parcelableUris.length);
+
+                if (uris != null) {
+                    for (Uri uri : uris) {
+                        //Log.i(TAG, " uri: " + uri);
+                        mMedia.add(uri);
+                    }
+
+                    showMedia();
+                }
+            }
+        }
+    }
+
+
+
+
+    private void showMedia() {
+        // Remove all views before
+        // adding the new ones.
+
+        mSelectedImagesContainer.removeAllViews();
+
+        Iterator<Uri> iterator = mMedia.iterator();
+        ImageInternalFetcher imageFetcher = new ImageInternalFetcher(this, 500);
+        while (iterator.hasNext()) {
+            Uri uri = iterator.next();
+
+            // showImage(uri);
+            //Log.i(TAG, " uri: " + uri);
+            if (mMedia.size() >= 1) {
+                mSelectedImagesContainer.setVisibility(View.VISIBLE);
+            }
+
+            View imageHolder = LayoutInflater.from(this).inflate(R.layout.media_layout, null);
+
+            // View removeBtn = imageHolder.findViewById(R.id.remove_media);
+            // initRemoveBtn(removeBtn, imageHolder, uri);
+            ImageView thumbnail = (ImageView) imageHolder.findViewById(R.id.media_image);
+
+            if (!uri.toString().contains("content://")) {
+                // probably a relative uri
+                uri = Uri.fromFile(new File(uri.toString()));
+            }
+
+            imageFetcher.loadImage(uri, thumbnail);
+
+            mSelectedImagesContainer.addView(imageHolder);
+
+            // set the dimension to correctly
+            // show the image thumbnail.
+            int wdpx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 300, getResources().getDisplayMetrics());
+            int htpx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, getResources().getDisplayMetrics());
+            thumbnail.setLayoutParams(new FrameLayout.LayoutParams(wdpx, htpx));
+        }
+    }
+
+
+
+
+    //Dialog box for adding new note
     @OnClick(R.id.makeANote)
     void openDialogBox(View v) {
         new MaterialDialog.Builder(this)
@@ -124,6 +242,7 @@ public class AddNewPlaceActivity extends AppCompatActivity implements GoogleApiC
                 .show();
     }
 
+    //Checkbox for name 1
     @OnCheckedChanged(R.id.name1)
     void enableEditText1(boolean checked){
         if (checked) {
@@ -140,7 +259,7 @@ public class AddNewPlaceActivity extends AppCompatActivity implements GoogleApiC
         }
     }
 
-
+    //Checkbox for name 2
     @OnCheckedChanged(R.id.name2)
     void enableEditText2(boolean checked) {
         if (checked) {
@@ -157,9 +276,7 @@ public class AddNewPlaceActivity extends AppCompatActivity implements GoogleApiC
         }
     }
 
-
-
-
+    //Date picker
     @OnClick(R.id.datePicker)
     void pickDate(final View v) {
         Calendar now = Calendar.getInstance();
@@ -180,7 +297,10 @@ public class AddNewPlaceActivity extends AppCompatActivity implements GoogleApiC
         }
         super.onCreate(savedInstanceState);
 
+        mContext = AddNewPlaceActivity.this;
 
+
+    //Initialize
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, 0 /* clientId */, this)
                 .addApi(Places.GEO_DATA_API)
@@ -191,7 +311,7 @@ public class AddNewPlaceActivity extends AppCompatActivity implements GoogleApiC
     //Toolbar Stuff
         toolbar = (Toolbar) findViewById(R.id.toolbar_actionbarAdd);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
+        getSupportActionBar().setTitle(null);
         if (android.os.Build.VERSION.SDK_INT>=21){
             toolbar.setNavigationIcon(R.drawable.keyboard_backspace);
         }
@@ -206,13 +326,6 @@ public class AddNewPlaceActivity extends AppCompatActivity implements GoogleApiC
             }
         });
 
-        //EditText date Initialize
-/*
-        Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
-        String formattedDate = df.format(c.getTime());
-        pickADate.setText(formattedDate);
-*/
 
         //Who paid how much
         final String groupIDUser = user.getString("groupID");
@@ -229,9 +342,11 @@ public class AddNewPlaceActivity extends AppCompatActivity implements GoogleApiC
 
                 } else {
                     //Log.d("score", "Error: " + e.getMessage());
+                    //Handle this case
                 }
             }
         });
+
 
     //Google Places Autocomplete stuff
 
@@ -357,6 +472,7 @@ public class AddNewPlaceActivity extends AppCompatActivity implements GoogleApiC
     }
 
 
+    //Hide Keyboard
     private void hideKeyboard() {
         // Check if no view has focus:
         View view = this.getCurrentFocus();
@@ -367,10 +483,13 @@ public class AddNewPlaceActivity extends AppCompatActivity implements GoogleApiC
     }
 
 
+    //On selecting the date from the date time picker. This function is called.
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         monthOfYear=monthOfYear+1;
         String date = dayOfMonth+"-"+ monthOfYear +"-"+year;
         pickADate.setText(date);
     }
+
+
 }

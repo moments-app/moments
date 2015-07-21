@@ -44,8 +44,12 @@
         <activity
             android:name=".AddNewPlaceActivity"
             android:label="@string/title_activity_add_new_place"
-            android:windowSoftInputMode="stateVisible|adjustResize|stateHidden">
+            android:windowSoftInputMode="stateHidden">
         </activity>
+
+        <activity
+            android:name="nl.changer.polypicker.ImagePickerActivity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

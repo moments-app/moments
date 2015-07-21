@@ -1,8 +1,11 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/addLinearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context="moments.app.com.AddNewPlaceActivity">
 
@@ -191,4 +194,28 @@
         android:text="@string/addPicture"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <HorizontalScrollView
+        android:id="@+id/hori_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="false"
+        android:foregroundGravity="left"
+        android:paddingBottom="1dp"
+        android:paddingTop="1dp" >
+
+        <LinearLayout
+            android:id="@+id/selected_photos_container"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:animateLayoutChanges="true"
+            android:gravity="start"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <!-- images will be added dynamicall to this layout -->
+        </LinearLayout>
+    </HorizontalScrollView>
+
 </LinearLayout>
+</ScrollView>
