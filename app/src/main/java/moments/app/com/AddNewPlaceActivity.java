@@ -62,13 +62,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
-import nl.changer.polypicker.Config;
-import nl.changer.polypicker.ImagePickerActivity;
-import nl.changer.polypicker.utils.ImageInternalFetcher;
+
 
 public class AddNewPlaceActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,
         DatePickerDialog.OnDateSetListener {
@@ -97,17 +96,17 @@ public class AddNewPlaceActivity extends AppCompatActivity implements GoogleApiC
     private ViewGroup mSelectedImagesNone;
     HashSet<Uri> mMedia = new HashSet<Uri>();
 
-    @InjectView(R.id.datePicker)
+    @Bind(R.id.datePicker)
     TextView pickADate;
-    @InjectView(R.id.name1)
+    @Bind(R.id.name1)
     CheckBox firstName;
-    @InjectView(R.id.name2)
+    @Bind(R.id.name2)
     CheckBox secondName;
-    @InjectView(R.id.editNameText1)
+    @Bind(R.id.editNameText1)
     EditText firstEdit;
-    @InjectView(R.id.editNameText2)
+    @Bind(R.id.editNameText2)
     EditText secondEdit;
-    @InjectView(R.id.makeANote)
+    @Bind(R.id.makeANote)
     TextView makeNote;
 
 
@@ -212,7 +211,7 @@ public class AddNewPlaceActivity extends AppCompatActivity implements GoogleApiC
                 .addApi(Places.GEO_DATA_API)
                 .build();
         setContentView(R.layout.activity_add_new_place);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
     //Toolbar Stuff
         toolbar = (Toolbar) findViewById(R.id.toolbar_actionbarAdd);

@@ -27,8 +27,8 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -38,8 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentTransaction fragmentTransaction;
     final ParseUser user = ParseUser.getCurrentUser();
 
-    @InjectView(R.id.fragmentProgressBar)
-    ProgressBar fragmentProgressBar;
+    @Bind(R.id.fragmentProgressBar) ProgressBar fragmentProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         fragmentProgressBar.setVisibility(View.VISIBLE);
         toolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
@@ -83,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                         fragmentProgressBar.setVisibility(View.INVISIBLE);
                     }
                 }
-                //If the email is not in the sender column, it can be in the reciever column. or it might not exist at all.
+                //If the email is not in the sender column, it can be in the receiver column or it might not exist at all.
                 else {
 
                     ParseQuery<ParseObject> query = ParseQuery.getQuery("Invitation");
