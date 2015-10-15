@@ -180,42 +180,5 @@
         android:text="@string/noteOrMemory"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/selectPicture"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="?attr/selectableItemBackground"
-        android:drawableLeft="@drawable/ic_image_filter_grey600_36dp"
-        android:drawablePadding="16dp"
-        android:drawableStart="@drawable/ic_image_filter_grey600_36dp"
-        android:gravity="center_vertical"
-        android:padding="16dp"
-        android:text="@string/addPicture"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <HorizontalScrollView
-        android:id="@+id/hori_scroll_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="false"
-        android:foregroundGravity="left"
-        android:paddingBottom="1dp"
-        android:paddingTop="1dp" >
-
-        <LinearLayout
-            android:id="@+id/selected_photos_container"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:animateLayoutChanges="true"
-            android:gravity="start"
-            android:orientation="horizontal"
-            android:visibility="visible" >
-
-            <!-- images will be added dynamicall to this layout -->
-        </LinearLayout>
-    </HorizontalScrollView>
-
 </LinearLayout>
 </ScrollView>

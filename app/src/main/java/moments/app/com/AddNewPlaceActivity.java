@@ -109,10 +109,7 @@ public class AddNewPlaceActivity extends AppCompatActivity implements GoogleApiC
     EditText secondEdit;
     @InjectView(R.id.makeANote)
     TextView makeNote;
-    @InjectView(R.id.selectPicture)
-    TextView selectPicture;
-    @InjectView(R.id.selected_photos_container)
-    ViewGroup mSelectedImagesContainer;
+
 
     //Called after user adds a note.
     private void randomFunction()
@@ -120,97 +117,6 @@ public class AddNewPlaceActivity extends AppCompatActivity implements GoogleApiC
        //Toast.makeText(this,"It works!",Toast.LENGTH_SHORT).show();
        hideKeyboard();
     }
-
-    @OnClick(R.id.selectPicture)
-    void openGallery(View v){
-        getImages();
-    }
-
-
-    private void getImages() {
-        Intent intent = new Intent(mContext, ImagePickerActivity.class);
-        Config config = new Config.Builder()
-                .setTabBackgroundColor(R.color.white)    // set tab background color. Default white.
-                .setTabSelectionIndicatorColor(R.color.myAccentColor)
-                .setCameraButtonColor(R.color.myAccentColor)
-                .setSelectionLimit(3)    // set photo selection limit. Default unlimited selection.
-                .build();
-        ImagePickerActivity.setConfig(config);
-        startActivityForResult(intent, INTENT_REQUEST_GET_N_IMAGES);
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resuleCode, Intent intent) {
-        super.onActivityResult(requestCode, resuleCode, intent);
-
-        if (resuleCode == Activity.RESULT_OK) {
-            if (requestCode == INTENT_REQUEST_GET_IMAGES || requestCode == INTENT_REQUEST_GET_N_IMAGES) {
-                Parcelable[] parcelableUris = intent.getParcelableArrayExtra(ImagePickerActivity.EXTRA_IMAGE_URIS);
-
-                if (parcelableUris == null) {
-                    return;
-                }
-
-                // Java doesn't allow array casting, this is a little hack
-                Uri[] uris = new Uri[parcelableUris.length];
-                System.arraycopy(parcelableUris, 0, uris, 0, parcelableUris.length);
-
-                if (uris != null) {
-                    for (Uri uri : uris) {
-                        //Log.i(TAG, " uri: " + uri);
-                        mMedia.add(uri);
-                    }
-
-                    showMedia();
-                }
-            }
-        }
-    }
-
-
-
-
-    private void showMedia() {
-        // Remove all views before
-        // adding the new ones.
-
-        mSelectedImagesContainer.removeAllViews();
-
-        Iterator<Uri> iterator = mMedia.iterator();
-        ImageInternalFetcher imageFetcher = new ImageInternalFetcher(this, 500);
-        while (iterator.hasNext()) {
-            Uri uri = iterator.next();
-
-            // showImage(uri);
-            //Log.i(TAG, " uri: " + uri);
-            if (mMedia.size() >= 1) {
-                mSelectedImagesContainer.setVisibility(View.VISIBLE);
-            }
-
-            View imageHolder = LayoutInflater.from(this).inflate(R.layout.media_layout, null);
-
-            // View removeBtn = imageHolder.findViewById(R.id.remove_media);
-            // initRemoveBtn(removeBtn, imageHolder, uri);
-            ImageView thumbnail = (ImageView) imageHolder.findViewById(R.id.media_image);
-
-            if (!uri.toString().contains("content://")) {
-                // probably a relative uri
-                uri = Uri.fromFile(new File(uri.toString()));
-            }
-
-            imageFetcher.loadImage(uri, thumbnail);
-
-            mSelectedImagesContainer.addView(imageHolder);
-
-            // set the dimension to correctly
-            // show the image thumbnail.
-            int wdpx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 300, getResources().getDisplayMetrics());
-            int htpx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, getResources().getDisplayMetrics());
-            thumbnail.setLayoutParams(new FrameLayout.LayoutParams(wdpx, htpx));
-        }
-    }
-
 
 
 
