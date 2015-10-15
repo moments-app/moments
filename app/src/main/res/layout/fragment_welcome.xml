@@ -5,25 +5,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/welcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/hello_world"
-            android:layout_marginTop="16dp"
-            android:textSize="20sp" />
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text="@string/hello_world"
+        android:textSize="20sp" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fabBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="@dimen/fab_margin_bottom"
-            android:layout_marginRight="@dimen/fab_margin_right"
-            android:layout_marginEnd="@dimen/fab_margin_right"
-            android:src="@drawable/ic_plus"
-            app:fabSize="normal"
-            app:borderWidth="0dp"/>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="@dimen/fab_margin_bottom"
+        android:layout_marginEnd="@dimen/fab_margin_right"
+        android:layout_marginRight="@dimen/fab_margin_right"
+        android:src="@drawable/ic_plus"
+        app:borderWidth="0dp"
+        app:fabSize="normal" />
 
 </FrameLayout>

@@ -35,5 +35,21 @@
     <string name="waitingToAccept"> Please wait for your partner to accept the invitation.</string>
     <string name="waitingImage">Waiting Image Placeholder</string>
     <string name="partnerName">Enter your name</string>
-    <string name="title_activity_add_new_place">AddNewPlaceActivity</string>
+    <string name="title_activity_add_new_place">Add New Place</string>
+    <string name="autocomplete_hint">Enter place name or address</string>
+    <string name="selected_place">Last Selected Place:</string>
+    <string name="clear_text">Clear Text</string>
+
+    <!-- getString(String, Object...) does not support HTML tags directly, they need to be encoded first.
+    Original string: <b>%1$s</b><br/><i>Place Id: %2$s</i><br/>Address: %3$s<br/>Phone: %4$s<br/>Website: %5$s-->
+    <string name="place_details">&lt;b&gt;%1$s&lt;/b&gt;&lt;br/&gt;&lt;i&gt;Place Id: %2$s&lt;/i&gt;&lt;br/&gt;Address: %3$s&lt;br/&gt;Phone: %4$s&lt;br/&gt;Website: %5$s</string>
+    <string name="dateImage">Date image</string>
+    <string name="whoPaid">Amount paid</string>
+    <string name="pickDate">Pick a date</string>
+    <string name="noteOrMemory">Add a note or memory</string>
+    <string name="submit">DONE</string>
+    <string name="input">Write a few words</string>
+    <string name="cancel">CANCEL</string>
+    <string name="pickPlace">Pick a place</string>
+    <string name="addPicture">Select up to 3 photos</string>
 </resources>

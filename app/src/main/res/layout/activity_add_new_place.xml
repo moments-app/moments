@@ -1,22 +1,184 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/addLinearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context="moments.app.com.AddNewPlaceActivity">
 
-    <android.support.v7.widget.Toolbar
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/toolbar_actionbarAdd"
-        xmlns:android="http://schemas.android.com/apk/res/android"
         style="@style/ToolBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
+        android:elevation="0dp"
         android:minHeight="@dimen/abc_action_bar_default_height_material" />
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:background="@color/myPrimaryColor"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="72dp"
+            android:layout_marginStart="72dp"
+            android:text="@string/pickPlace"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/myAccentColor" />
+
+
+        <AutoCompleteTextView
+            android:id="@+id/autocomplete_places"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="32dp"
+            android:layout_marginLeft="72dp"
+            android:layout_marginRight="72dp"
+            android:layout_marginStart="72dp"
+            android:hint="@string/autocomplete_hint"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/primary_text_dark"
+            android:textColorHint="@color/primary_dark_material_light" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:contentDescription="@string/waitingImage"
+            android:src="@drawable/powered_by_google_light" />
+
+        <!--
+        <TextView
+            android:id="@+id/place_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:text=""
+            android:layout_margin="16dp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/place_latLong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:text=""
+            android:layout_margin="16dp"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        -->
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <CheckBox
+            android:id="@+id/name1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/editNameText1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableLeft="@drawable/ic_currency_inr_grey600_18dp"
+            android:drawableStart="@drawable/ic_currency_inr_grey600_18dp"
+            android:enabled="false"
+            android:gravity="center_vertical"
+            android:hint="@string/whoPaid"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+        <CheckBox
+            android:id="@+id/name2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/editNameText2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableLeft="@drawable/ic_currency_inr_grey600_18dp"
+            android:drawableStart="@drawable/ic_currency_inr_grey600_18dp"
+            android:enabled="false"
+            android:gravity="center_vertical"
+            android:hint="@string/whoPaid"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
+
+    <TextView
+        android:id="@+id/datePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="?attr/selectableItemBackground"
+        android:drawableLeft="@drawable/ic_calendar_grey600_36dp"
+        android:drawablePadding="16dp"
+        android:drawableStart="@drawable/ic_calendar_grey600_36dp"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="@string/pickDate"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/makeANote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="?attr/selectableItemBackground"
+        android:drawableLeft="@drawable/ic_pencil_grey600_36dp"
+        android:drawablePadding="16dp"
+        android:drawableStart="@drawable/ic_pencil_grey600_36dp"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="@string/noteOrMemory"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </LinearLayout>
+</ScrollView>
