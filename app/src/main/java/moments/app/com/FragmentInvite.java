@@ -38,22 +38,17 @@ import com.parse.SignUpCallback;
 import java.util.HashMap;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import butterknife.OnClick;
 
 
 public class FragmentInvite extends Fragment {
 
-    @InjectView(R.id.name)
-    EditText nameUser;
-    @InjectView(R.id.emailPartner)
-    EditText partnerEmail;
-    @InjectView(R.id.secretCode)
-    EditText secretCode;
-    @InjectView(R.id.inviteButton)
-    Button inviteButton;
-    @InjectView(R.id.inviteProgress)
-    ProgressBar progressBar;
+    @Bind(R.id.name) EditText nameUser;
+    @Bind(R.id.emailPartner) EditText partnerEmail;
+    @Bind(R.id.secretCode) EditText secretCode;
+    @Bind(R.id.inviteButton) Button inviteButton;
+    @Bind(R.id.inviteProgress) ProgressBar progressBar;
     final ParseUser user = ParseUser.getCurrentUser();
 
     @OnClick(R.id.inviteButton)
@@ -195,7 +190,7 @@ public class FragmentInvite extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_invite, container, false);
 
-        ButterKnife.inject(this, view);
+        ButterKnife.bind(this, view);
 
         return view;
     }

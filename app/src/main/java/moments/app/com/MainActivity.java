@@ -27,8 +27,8 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -38,8 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentTransaction fragmentTransaction;
     final ParseUser user = ParseUser.getCurrentUser();
 
-    @InjectView(R.id.fragmentProgressBar)
-    ProgressBar fragmentProgressBar;
+    @Bind(R.id.fragmentProgressBar) ProgressBar fragmentProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         fragmentProgressBar.setVisibility(View.VISIBLE);
         toolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);

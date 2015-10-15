@@ -19,14 +19,13 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Toast;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
 
 public class FragmentWelcome extends Fragment {
 
-    @InjectView(R.id.fabBtn)
-    FloatingActionButton fab;
+    @Bind(R.id.fabBtn) FloatingActionButton fab;
 
     @OnClick(R.id.fabBtn) void startAddPlace(View view){
 
@@ -51,7 +50,7 @@ public class FragmentWelcome extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_welcome, container, false);
-        ButterKnife.inject(this, view);
+        ButterKnife.bind(this, view);
         return view;
     }
 }

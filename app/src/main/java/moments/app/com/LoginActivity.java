@@ -21,8 +21,9 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -30,13 +31,13 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class LoginActivity extends AppCompatActivity {
 
 
-    @InjectView(R.id.emailEditText) EditText email;
-    @InjectView(R.id.passwordEditText) EditText password;
-    @InjectView(R.id.loginButton) Button loginButton;
-    @InjectView(R.id.emailLabel) TextInputLayout emailLabel;
-    @InjectView(R.id.passwordLabel) TextInputLayout passwordLabel;
-    @InjectView(R.id.signUpProgress) ProgressBar progressBar;
-    @InjectView(R.id.showPassword) CheckBox showPassword;
+    @Bind(R.id.emailEditText) EditText email;
+    @Bind(R.id.passwordEditText) EditText password;
+    @Bind(R.id.loginButton) Button loginButton;
+    @Bind(R.id.emailLabel) TextInputLayout emailLabel;
+    @Bind(R.id.passwordLabel) TextInputLayout passwordLabel;
+    @Bind(R.id.signUpProgress) ProgressBar progressBar;
+    @Bind(R.id.showPassword) CheckBox showPassword;
 
     @OnClick(R.id.loginButton) void login(View view){
 
@@ -207,7 +208,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
             setContentView(R.layout.activity_login);
-            ButterKnife.inject(this);
+            ButterKnife.bind(this);
 
     }
 

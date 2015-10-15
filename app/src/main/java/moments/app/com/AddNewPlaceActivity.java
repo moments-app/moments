@@ -15,7 +15,6 @@ import android.view.Window;
 
 import com.mikepenz.iconics.typeface.FontAwesome;
 
-import butterknife.InjectView;
 
 public class AddNewPlaceActivity extends AppCompatActivity {
 

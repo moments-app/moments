@@ -21,8 +21,8 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
@@ -30,18 +30,13 @@ import butterknife.OnClick;
  */
 public class FragmentInvited extends Fragment {
 
-    @InjectView(R.id.partnerName)
-    EditText partnerName;
-    @InjectView(R.id.secretCodeName)
-    EditText secretCodeName;
-    @InjectView(R.id.startUsingAppButton)
-    Button startUsingAppButton;
-    @InjectView(R.id.inviteProgress2)
-    ProgressBar progressBar;
+    @Bind(R.id.partnerName) EditText partnerName;
+    @Bind(R.id.secretCodeName) EditText secretCodeName;
+    @Bind(R.id.startUsingAppButton) Button startUsingAppButton;
+    @Bind(R.id.inviteProgress2) ProgressBar progressBar;
     final ParseUser user = ParseUser.getCurrentUser();
 
-    @OnClick(R.id.startUsingAppButton)
-    void invited(final View v) {
+    @OnClick(R.id.startUsingAppButton) void invited(final View v) {
 
         hideKeyboard(getActivity());
         if (!partnerName.getText().toString().equals("")) {
@@ -133,7 +128,7 @@ public class FragmentInvited extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_invited, container, false);
-        ButterKnife.inject(this, view);
+        ButterKnife.bind(this, view);
         return view;
     }
 }
